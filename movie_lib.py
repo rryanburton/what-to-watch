@@ -4,12 +4,14 @@ import csv
 
 
 class User:
-    def __init__(self, user_id, **kwargs):
+    def __init__(self, user_id):
         self.user_id = user_id
         # age
         # gender
         # occupation
         # zipcode
+
+
 
 #     def __str__(self):
 #         return 'User(id)'
@@ -31,10 +33,14 @@ print(users)
 
 
 class Movie:
-    def __init__(self, movie_id, movie_title, **kwargs):
+    def __init__(self, movie_id, movie_title):
         self.movie_id = movie_id
         self.movie_title = movie_title
         # several other columns of info
+
+
+    def Movie(movie_title):
+        movie_id = Movie.movie_title
 
 #lookup movie_id when given movie_title
 #find the name of the movie in u.item by looking up a particular movie_id
@@ -49,7 +55,7 @@ print(movie_info)
 
 
 class Rating:
-    def __init__(self, rating_user_id, rating_item_id, rating_rating, **kwargs):
+    def __init__(self, rating_user_id, rating_item_id, rating_rating):
         self.rating_user_id = rating_user_id
         self.rating_item_id = rating_item_id
         self.rating_rating = rating_rating
