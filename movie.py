@@ -44,9 +44,14 @@ print(movie_ratings)
 import csv
 with open('u.item') as args:
     cin = csv.reader(args, delimiter='|')
-    movie = [row for row in cin]
-print(movie)
+    movie_info = [row for row in cin]
+print(movie_info)
 
+import csv
+with open('u.user') as args:
+    cin = csv.reader(args, delimiter='|')
+    users = [row for row in cin]
+print(users)
 # with open('u.item', 'rt') as fin:
 #     cin = csv.DictReader(fin, delimiter='|', fieldnames=['movie_id', 'movie_title', 'release_date', 'vrelease_date'])
 #     movie_info = [row for row in cin]
