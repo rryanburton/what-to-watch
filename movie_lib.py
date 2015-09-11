@@ -26,12 +26,6 @@ print(users)
 
 
 
-
-
-
-
-
-
 class Movie:
     def __init__(self, movie_id, movie_title):
         self.movie_id = movie_id
@@ -50,8 +44,6 @@ with open('u.item') as args:
     cin = csv.reader(args, delimiter='|')
     movie_info = [row for row in cin]
 print(movie_info)
-
-
 
 
 class Rating:
