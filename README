@@ -1,145 +1,160 @@
-SUMMARY & USAGE LICENSE
-=============================================
+# What to Watch
 
-MovieLens data sets were collected by the GroupLens Research Project
-at the University of Minnesota.
- 
-This data set consists of:
-	* 100,000 ratings (1-5) from 943 users on 1682 movies. 
-	* Each user has rated at least 20 movies. 
-        * Simple demographic info for the users (age, gender, occupation, zip)
+## Description
 
-The data was collected through the MovieLens web site
-(movielens.umn.edu) during the seven-month period from September 19th, 
-1997 through April 22nd, 1998. This data has been cleaned up - users
-who had less than 20 ratings or did not have complete demographic
-information were removed from this data set. Detailed descriptions of
-the data file can be found at the end of this file.
+Use the MovieLens data to recommend movies to users.
 
-Neither the University of Minnesota nor any of the researchers
-involved can guarantee the correctness of the data, its suitability
-for any particular purpose, or the validity of results based on the
-use of the data set.  The data set may be used for any research
-purposes under the following conditions:
+## Tasks
 
-     * The user may not state or imply any endorsement from the
-       University of Minnesota or the GroupLens Research Group.
+```markdown
+* [ ] Blank slate
+  * [ ] Create a GitHub repo called `what-to-watch`
+  * [ ] Put a `README.md` file in it and create movie_lib.py to contain your classes
+* [ ] Normal mode
+  * [ ] Decide on the data structures that you're going to use to represent the information you'll need for this project
+  * [ ] Create relevant classes
+  * [ ] Write test code for your classes
+  * [ ] Load movie data using `csv` module
+  * [ ] Write a program to recommend popular movies
+  * [ ] Write a function to find similar users
+  * [ ] Write a program to recommend highly rated movies for a user based on similar users' favorites
+  * [ ] Decide on an interface for making all these things accessible and write it
+* [ ] Hard Mode
+  * [ ] Calculate user similarity using the Pearson correlation score
+  * [ ] Write functionality to find similar movies based on their reviews from users
+  * [ ] Test out your program with the MovieLens 1M dataset, and write any notes about it in the README
+  * [ ] Think of some other interesting functionality and implement it!
+```
 
-     * The user must acknowledge the use of the data set in
-       publications resulting from the use of the data set, and must
-       send us an electronic or paper copy of those publications.
+## Objectives
 
-     * The user may not redistribute the data without separate
-       permission.
+After completing this assignment, you should be able to:
 
-     * The user may not use this information for any commercial or
-       revenue-bearing purposes without first obtaining permission
-       from a faculty member of the GroupLens Research Project at the
-       University of Minnesota.
+* Use the `csv` module to read files
+* Use list comprehensions to filter data and perform calculations
+* Model a problem using objects and functions
 
-If you have any further questions or comments, please contact GroupLens
-<grouplens-info@cs.umn.edu>. 
+## Details
 
-ACKNOWLEDGEMENTS
-==============================================
+* A Git repo called `what-to-watch` containing at least:
+  * `README.md` file explaining how to run your project
+  * A `movie_lib.py` file containing your classes
+  * Other python files containing programs that use the classes in `movie_lib.py`
 
-Thanks to Al Borchers for cleaning up this data and writing the
-accompanying scripts.
+## Normal Mode
 
-PUBLISHED WORK THAT HAS USED THIS DATASET
-==============================================
+First, go to the [MovieLens website](http://grouplens.org/datasets/movielens/)
+and download the MovieLens 100K data. Unzip it and read the `README` file
+to understand the data.
 
-Herlocker, J., Konstan, J., Borchers, A., Riedl, J.. An Algorithmic
-Framework for Performing Collaborative Filtering. Proceedings of the
-1999 Conference on Research and Development in Information
-Retrieval. Aug. 1999.
+You will write a system that will recommend movies to a user based on
+ratings from similar users.
 
-FURTHER INFORMATION ABOUT THE GROUPLENS RESEARCH PROJECT
-==============================================
+### Step 1
 
-The GroupLens Research Project is a research group in the Department
-of Computer Science and Engineering at the University of Minnesota.
-Members of the GroupLens Research Project are involved in many
-research projects related to the fields of information filtering,
-collaborative filtering, and recommender systems. The project is lead
-by professors John Riedl and Joseph Konstan. The project began to
-explore automated collaborative filtering in 1992, but is most well
-known for its world wide trial of an automated collaborative filtering
-system for Usenet news in 1996.  The technology developed in the
-Usenet trial formed the base for the formation of Net Perceptions,
-Inc., which was founded by members of GroupLens Research. Since then
-the project has expanded its scope to research overall information
-filtering solutions, integrating in content-based methods as well as
-improving current collaborative filtering technology.
+You need to write classes to represent the concepts in this project. I
+suggest the following classes:
 
-Further information on the GroupLens Research project, including
-research publications, can be found at the following web site:
-        
-        http://www.grouplens.org/
+* **Movie**
+* **User**
+* **Rating**
 
-GroupLens Research currently operates a movie recommender based on
-collaborative filtering:
+Take a look at the MovieLens README file to determine what fields you should
+associate with each of these classes.
 
-        http://www.movielens.org/
+Note that you will need to make associations between users and ratings, and
+ratings and movies.
 
-DETAILED DESCRIPTIONS OF DATA FILES
-==============================================
+Specifically, you will need to be able to:
 
-Here are brief descriptions of the data.
+* Find all ratings for a movie by id
+* Find the average rating for a movie by id
+* Find the name of a movie by id
+* Find all ratings for a user
 
-ml-data.tar.gz   -- Compressed tar file.  To rebuild the u data files do this:
-                gunzip ml-data.tar.gz
-                tar xvf ml-data.tar
-                mku.sh
+Write methods to handle the above use cases, and then write some tests and
+load in some test data to ensure they work.
 
-u.data     -- The full u data set, 100000 ratings by 943 users on 1682 items.
-              Each user has rated at least 20 movies.  Users and items are
-              numbered consecutively from 1.  The data is randomly
-              ordered. This is a tab separated list of 
-	         user id | item id | rating | timestamp. 
-              The time stamps are unix seconds since 1/1/1970 UTC   
+### Step 2
 
-u.info     -- The number of users, items, and ratings in the u data set.
+You need to be able to load in movie and rating data. Using the `csv` module,
+write a module that will load in the the user data from `u.user`, the movie
+data from `u.item`, and the rating data from `u.info`.
 
-u.item     -- Information about the items (movies); this is a tab separated
-              list of
-              movie id | movie title | release date | video release date |
-              IMDb URL | unknown | Action | Adventure | Animation |
-              Children's | Comedy | Crime | Documentary | Drama | Fantasy |
-              Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi |
-              Thriller | War | Western |
-              The last 19 fields are the genres, a 1 indicates the movie
-              is of that genre, a 0 indicates it is not; movies can be in
-              several genres at once.
-              The movie ids are the ones used in the u.data data set.
+### Step 3
 
-u.genre    -- A list of the genres.
+The easiest way to recommend movies is to recommend the most popular movies.
+Write a program to show the top X movies by average rating with their rating.
+You need to be able to state a minimum number of ratings for a movie to be
+considered.
 
-u.user     -- Demographic information about the users; this is a tab
-              separated list of
-              user id | age | gender | occupation | zip code
-              The user ids are the ones used in the u.data data set.
+Now, create the ability to find the top X movies by average rating that _a
+specific user has not rated_. This allows you to suggest popular movies for
+a specific user.
 
-u.occupation -- A list of the occupations.
+### Step 4
 
-u1.base    -- The data sets u1.base and u1.test through u5.base and u5.test
-u1.test       are 80%/20% splits of the u data into training and test data.
-u2.base       Each of u1, ..., u5 have disjoint test sets; this if for
-u2.test       5 fold cross validation (where you repeat your experiment
-u3.base       with each training and test set and average the results).
-u3.test       These data sets can be generated from u.data by mku.sh.
-u4.base
-u4.test
-u5.base
-u5.test
+Popular movies are not really good enough on their own. What would be great
+is a way to match two users by their tastes. You need to create the ability
+to take two users and find their similarity. There's a few ways to do this.
+We'll focus on the _Euclidean distance_. If you have a list of movie
+ratings for user 1 (_v_) and a list for user 2 (_w_), where each list
+is made up of ratings for movies they've both seen in the same order, then
+you can use this formula:
 
-ua.base    -- The data sets ua.base, ua.test, ub.base, and ub.test
-ua.test       split the u data into a training set and a test set with
-ub.base       exactly 10 ratings per user in the test set.  The sets
-ub.test       ua.test and ub.test are disjoint.  These data sets can
-              be generated from u.data by mku.sh.
+```python
+def euclidean_distance(v, w):
+    """Given two lists, give the Euclidean distance between them on a scale
+    of 0 to 1. 1 means the two lists are identical.
+    """
 
-allbut.pl  -- The script that generates training and test sets where
-              all but n of a users ratings are in the training data.
+    # Guard against empty lists.
+    if len(v) is 0:
+        return 0
 
-mku.sh     -- A shell script to generate all the u data sets from u.data.
+    # Note that this is the same as vector subtraction.
+    differences = [v[idx] - w[idx] for idx in range(len(v))]
+    squares = [diff ** 2 for diff in differences]
+    sum_of_squares = sum(squares)
+
+    return 1 / (1 + math.sqrt(sum_of_squares))
+```
+
+### Step 5
+
+Now that you can calculate the similarity between two users, add a new
+ability. Given a list of all users, find the users most similar to a
+specific user, and then recommend the highest rated movies from those
+users that the specific user hasn't seen.
+
+A good formula for figuring out movies that user might like the most
+is `similarity * rating`.
+
+### Step 6
+
+Put this all together! The interface is up to you. You may want to
+have one program that presents a menu system so you can see top
+overall movies, popular movies you haven't seen (you'll have to give
+your user id), or recommendations specific to you.
+
+Another option would be a command-line program that takes arguments
+on the command line. Look at the `argparse` library for this. You might
+make multiple programs, like so:
+
+* `popular_movies.py` -- returns a table of popular movies, takes a user_id
+   argument to filter out movies that user has seen
+* `recommendations.py` -- returns a table of recommended movies for a user
+
+## Hard Mode
+
+In addition to all of the above:
+
+* Look up the _Pearson correlation score_ and implement it as well as
+Euclidean distance. Try both and find out which gives you better results.
+* We currently recommend movies by finding similar users. Turn your data around
+to find similar movies based on their reviews from users. Add the ability to
+choose a movie by id and see the movies that are most like it and most not like
+it.
+* Try out your program with the MovieLens 1M dataset.
+* Think of something new and try it out! There's a lot of data that comes with
+MovieLens.
