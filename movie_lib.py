@@ -21,30 +21,30 @@ class Movie:
         self.ratings = {}  #key: user_id, value: Rating object
 
         # several other columns of info
-    def __str__(self):
-        return 'Movie(movie_id={}, title={})'.format(self.id, repr(self.title))
-
-    def get_ratings(self):
-        return self.ratings.values()
-
-    def add_rating(self, rating):
-        self.ratings[rating.user_id] = rating
-
-
-    def Movie(movie_title):
-        movie_id = Movie.movie_title
+    # def __str__(self):
+    #     return 'Movie(movie_id={}, title={})'.format(self.id, repr(self.title))
+    #
+    # def get_ratings(self):
+    #     return self.ratings.values()
+    #
+    # def add_rating(self, rating):
+    #     self.ratings[rating.user] = rating
+    #
+    #
+    # def Movie(movie_title):
+    #     movie_id = Movie.movie_title
 
 
 class Rating:
-    def __init__(self, user, movie, stars):
-        self.user = user
-        self.movie = movie
+    def __init__(self, user_id, movie_id, stars):
+        self.user_id = user_id
+        self.movie_id = movie_id
         self.stars = stars
         # self.timestamp = timestamp
-        all_movies[self.movie_id].add_rating(self)
+        # all_movies[self.movie_id].add_rating(self)
 
-    def __str__(self):
-        return 'Rating(user_id={}, movie_id={}, stars={})'.format(self.id)
+    # def __str__(self):
+    #     return 'Rating(user_id={}, movie_id={}, stars={})'.format(self.id)
 
         # timestamp
 #Find all ratings for a movie by id
