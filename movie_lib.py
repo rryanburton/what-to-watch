@@ -83,10 +83,10 @@ class Rating:
 
 
 
-with open('u.item') as args:
-    cin = csv.reader(args, delimiter='|')
-    movie_info = [row for row in cin]
-print(movie_info)
+# with open('u.item') as args:
+#     cin = csv.reader(args, delimiter='|')
+#     movie_info = [row for row in cin]
+# print(movie_info)
 #
 #
 # with open('u.user') as args:
