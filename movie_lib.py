@@ -13,6 +13,11 @@ class User:
         # zipcode
         all_users[self.id] = self
 
+        def __str__(self):
+            return 'User(user_id={})'.format(self.id)
+        def __repr__(self):
+            return self.__str__()
+
 
 class Movie:
     def __init__(self, movie_id, title):
@@ -33,13 +38,9 @@ class Movie:
 
     def get_ratings(self):
         return self.ratings.values()
-    #
 
-    #
-    #
     # def Movie(movie_title):
     #     movie_id = Movie.movie_title
-
 
 class Rating:
     def __init__(self, user_id, movie_id, stars):
