@@ -1,7 +1,7 @@
 import csv
 
 all_movies = {}
-all_user = {}
+all_users = {}
 
 
 class User:
@@ -11,6 +11,7 @@ class User:
         # gender
         # occupation
         # zipcode
+        all_users[self.id] = self
 
 
 class Movie:
@@ -21,14 +22,19 @@ class Movie:
         self.ratings = {}  #key: user_id, value: Rating object
 
         # several other columns of info
-    # def __str__(self):
-    #     return 'Movie(movie_id={}, title={})'.format(self.id, repr(self.title))
+    def __str__(self):
+        return 'Movie(movie_id={}, title={})'.format(self.id, repr(self.title))
+
+    def __repr__(self):
+        return self.__str__()
+
+    def add_rating(self, rating):
+        self.ratings[rating.user_id] = rating
+
+    def get_ratings(self):
+        return self.ratings.values()
     #
-    # def get_ratings(self):
-    #     return self.ratings.values()
-    #
-    # def add_rating(self, rating):
-    #     self.ratings[rating.user] = rating
+
     #
     #
     # def Movie(movie_title):
@@ -41,11 +47,13 @@ class Rating:
         self.movie_id = movie_id
         self.stars = stars
         # self.timestamp = timestamp
-        # all_movies[self.movie_id].add_rating(self)
+        all_movies[self.movie_id].add_rating(self)
 
-    # def __str__(self):
-    #     return 'Rating(user_id={}, movie_id={}, stars={})'.format(self.id)
+    def __str__(self):
+        return 'Rating(user_id={}, movie_id={}, stars={})'.format(self.user_id, self.movie_id, self.stars)
 
+    def __repr__(self):
+        return self.__str__()
         # timestamp
 #Find all ratings for a movie by id
 
