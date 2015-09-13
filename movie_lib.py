@@ -114,4 +114,10 @@ class Rating:
 #find the name of the movie in u.item by looking up a particular movie_id
 
 ##find all ratings for a User
-# #look for all instances of the user id in u.data of the user id in u.user
+
+
+
+
+#   Find all ratings for a movie by id
+#   all_movies[movie1.id].get_ratings()
+#   returns this:  dict_values([Rating(user_id=12, movie_id=9, stars=3), Rating(user_id=5, movie_id=9, stars=1)])
