@@ -27,6 +27,7 @@ class Movie:
         self.ratings = {}  #key: user_id, value: Rating object
 
         # several other columns of info
+
     def __str__(self):
         return 'Movie(movie_id={}, title={})'.format(self.id, repr(self.title))
 
@@ -39,8 +40,13 @@ class Movie:
     def get_ratings(self):
         return self.ratings.values()
 
-    # def Movie(movie_title):
-    #     movie_id = Movie.movie_title
+
+    def get_title(self):
+        return self.title
+
+    def get_id(title):
+        return movie_id
+
 
 class Rating:
     def __init__(self, user_id, movie_id, stars):
@@ -55,7 +61,8 @@ class Rating:
 
     def __repr__(self):
         return self.__str__()
-        # timestamp
+
+
 #Find all ratings for a movie by id
 
 
@@ -115,9 +122,21 @@ class Rating:
 
 ##find all ratings for a User
 
-
+#   Find the name of a movie by id
 
 
 #   Find all ratings for a movie by id
 #   all_movies[movie1.id].get_ratings()
 #   returns this:  dict_values([Rating(user_id=12, movie_id=9, stars=3), Rating(user_id=5, movie_id=9, stars=1)])
+def top_movies():
+    num_top = input("how many top movies do you want to see?\n")
+    min_num_top = input("what is the minimum number of ratings a movie must have to be considered in the top list? \n")
+
+# take the movies and find len(ratings)
+# make a new list or remove the movies with quantity of ratings less than min_num_top
+
+
+# show the num_top quantity of movies sorted with the highest ave rank 1st
+    print("""The top {} movies by average rating are:\n
+        disclaimer: movies must have been ranked at
+         least {} times.\n""".format(num_top,min_num_top))
