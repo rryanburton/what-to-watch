@@ -1,8 +1,8 @@
 from movie_lib import *
-# def test_get_data():
-#     get_items()
-#     get_users()
-#     get_ratings()
+def test_get_data():
+    get_items()
+    get_users()
+    get_ratings()
 
 frank = User(2)
 john = User(7)
@@ -16,11 +16,11 @@ rating3 = Rating(siskel.id, movie2.id, 1)
 rating4 = Rating(ebert.id, movie1.id, 5)
 rating5 = Rating(john.id, movie2.id, 2)
 rating6 = Rating(frank.id, movie2.id, 4)
-print(all_movies)
-print(all_movies[3])
-print(id(movie1))
-print(id(all_movies[3]))
-print(id(siskel))
+# print(all_movies)
+# print(all_movies[3])
+# print(id(movie1))
+# print(id(all_movies[3]))
+# print(id(siskel))
 
 def test_user_creation():
 
@@ -64,6 +64,8 @@ def test_all_ratings_fora_user_id():
     print(all_users[5].get_user_ratings(), "all user[5] ratings") #this prints if test fails
     assert all_users[5].get_user_ratings() == {9: 1, 3: 4}
 
+def test_top_movie():
+    top_movies()
 
 def test_find_ratings_for_movie():
     toy_story_ratings = all_movies[movie1.id].get_ratings()
@@ -78,16 +80,16 @@ def test_find_ratings_for_movie():
     # # print(all_movies[movie2.title].get_id())
     # print(rating.stars)
 
-    print(all_movies[9], "all_movies[9]")
+    print(all_movies[172], "<------  all_movies[172]")
     # print(id("Pretty Woman"))
     # print(id(all_movies[9]))
 
 
 
 
-    print(all_movies[movie2.id].get_ratings(), 'all_movies[movie2.id].get_ratings()')
-    print(all_movies[movie2.id].get_ave_rating())
-    print(len(all_movies[movie2.id].get_ratings()))
+    # print(all_movies[172].get_ratings(), '<------  all_movies[172].get_ratings()')
+    print(all_movies[172].get_ave_rating(), "ave rating movie 172")
+    print(len(all_movies[172].get_ratings()), "len ratings[172]")
     #
     #
     # print(all_movies[movie1.id].get_title())
