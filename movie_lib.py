@@ -123,7 +123,7 @@ def top_movies():
 
 # show the num_top quantity of movies sorted with the highest ave rank 1st
 
-top_movies()
+# top_movies()
 # for each movie in top_movies look for a user_id and
 # remove those movie_ids and make a new top_movies list
 
