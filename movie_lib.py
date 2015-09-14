@@ -103,14 +103,18 @@ def top_movies():
     get_ratings()
     num_top = int(input("how many top movies do you want to see?\n"))
     min_num_top = int(input("what is the minimum number of ratings a movie must have to be considered in the top list? \n"))
+    # num_top = 50
+    # min_num_top = 25
     top_dict = {}
     for idx in all_movies:
         if len(all_movies[idx].get_ratings()) > min_num_top:
             top_dict[idx] = all_movies[idx].get_ave_rating()
-    top_dict = sorted(top_dict.items(), reverse = True)
+    top_dict = sorted(top_dict.items(), key=lambda m: m[1], reverse = True)
     print("""The top {} movies by average rating are:\n
         disclaimer: movies must have been ranked at
          least {} times.\n""".format(num_top,min_num_top))
+
+
     print(top_dict[:num_top])
 # take the movies and find len(ratings)
 # make a new list or remove the movies with quantity of ratings less than min_num_top
