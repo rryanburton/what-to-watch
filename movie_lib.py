@@ -50,7 +50,7 @@ class Movie:
         return self.ratings.values()
 
     def get_ave_rating(self):
-        return sum(self.get_ratings())/len(self.get_ratings())
+        return round(sum(self.get_ratings())/len(self.get_ratings()), 2)
 
     def get_title(self):
         return self.title
@@ -96,24 +96,30 @@ def get_users():
         for row in reader:
             User(int(row['user_id']))
 
-def get_data():
+
+def top_movies():
     get_items()
     get_users()
     get_ratings()
-
-def top_movies():
-    num_top = input("how many top movies do you want to see?\n")
-    min_num_top = input("what is the minimum number of ratings a movie must have to be considered in the top list? \n")
-
+    num_top = int(input("how many top movies do you want to see?\n"))
+    min_num_top = int(input("what is the minimum number of ratings a movie must have to be considered in the top list? \n"))
+    top_dict = {}
+    for idx in all_movies:
+        if len(all_movies[idx].get_ratings()) > min_num_top:
+            top_dict[idx] = all_movies[idx].get_ave_rating()
+    top_dict = sorted(top_dict.items(), reverse = True)
+    print("""The top {} movies by average rating are:\n
+        disclaimer: movies must have been ranked at
+         least {} times.\n""".format(num_top,min_num_top))
+    print(top_dict[:num_top])
 # take the movies and find len(ratings)
 # make a new list or remove the movies with quantity of ratings less than min_num_top
 
 
-# show the num_top quantity of movies sorted with the highest ave rank 1st
-    print("""The top {} movies by average rating are:\n
-        disclaimer: movies must have been ranked at
-         least {} times.\n""".format(num_top,min_num_top))
 
+# show the num_top quantity of movies sorted with the highest ave rank 1st
+
+top_movies()
 # for each movie in top_movies look for a user_id and
 # remove those movie_ids and make a new top_movies list
 
