@@ -15,7 +15,7 @@ class User:
         self.ratings = {}  #key: movie_id, value: rating stars
 
     def add_user_rating(self, rating):
-        self.ratings[rating.movie] = rating.stars
+        self.ratings[rating.movie] = rating
 
     def get_user_ratings(self):
         return self.ratings
@@ -61,9 +61,9 @@ class Movie:
 
 class Rating:
     def __init__(self, user, movie, stars):
-        self.user = user
-        self.movie = movie
-        self.stars = stars
+        self.user = int(user)
+        self.movie = int(movie)
+        self.stars = int(stars)
         # self.timestamp = timestamp
         all_movies[self.movie].add_rating(self)
         all_users[self.user].add_user_rating(self)
